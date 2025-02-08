@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    
+    
+    <!--<record model="ir.config_parameter" id="my_license_param" forcecreate="False">
+            <field name="key">database.expiration_date</field>
+            <field name="value" eval="(datetime.now() + timedelta(days=3650)).strftime('%Y-%m-%d %H:%M:%S')"/>
+    </record>-->
+
+    <function model="ir.config_parameter" name="set_param" eval="('database.expiration_date', (datetime.now() + timedelta(days=3650)).strftime('%Y-%m-%d %H:%M:%S'))"/>
+
+    
+    <!--<record id="mail.ir_cron_module_update_notification" model="ir.cron">
+       <field eval="False" name="active"/>
+    </record>-->
+
+    <function model="ir.cron" name="action_archive" eval="[ref('mail.ir_cron_module_update_notification')]"/>
+
+
+</odoo>
